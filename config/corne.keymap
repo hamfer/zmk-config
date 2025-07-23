@@ -10,7 +10,7 @@
 
 / {
     behaviors {
-        shift_td: shift_td {
+        shiftd: shift_td {
             compatible = "zmk,behavior-tap-dance";
             label = "SHIFT_TAP_DANCE";
             #binding-cells = <0>;
@@ -33,20 +33,22 @@
             hold-trigger-on-release;
         };
 
-        layer_stick: layer_stick {
+        lhtt: layer_hold_tap_toggle {
             compatible = "zmk,behavior-hold-tap";
-            label = "LAYER_STICK";
+            label = "LAYER_HOLD_TAP_TOGGLE";
             bindings = <&mo>, <&kt>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <180>;
             hold-trigger-key-positions = <37>;
+            quick-tap-ms = <120>;
+            hold-while-undecided;
         };
 
-        shift_ht: shift_ht {
+        shiftht: shift_ht {
             compatible = "zmk,behavior-hold-tap";
             label = "SHIFT_HOLD_TAP";
-            bindings = <&kp>, <&shift_td>;
+            bindings = <&kp>, <&shiftd>;
 
             #binding-cells = <2>;
             hold-trigger-key-positions = <24>;
@@ -77,10 +79,10 @@
             //                   | CTRL | LWR | SPC |   | GUI | RSE | ALT |
 
             bindings = <
-&kp ESC             &kp Q        &kp W        &kp E         &kp R                    &kp T        &kp Y    &kp U         &kp I         &kp O        &kp P           &kp BSPC
-&kp TAB             &hrm LGUI A  &hrm LALT S  &hrm LCTRL D  &hrm LSHIFT F            &kp G        &kp H    &hrm RSHFT J  &hrm RCTRL K  &hrm RALT L  &hrm RGUI SEMI  &kp SQT
-&shift_ht LSHIFT 0  &kp Z        &kp X        &kp C         &kp V                    &kp B        &kp N    &kp M         &kp COMMA     &kp DOT      &kp FSLH        &key_repeat
-                                              &mo 3         &layer_stick 1 LEFT_ALT  &kp SPACE    &kp RET  &mo 2         &kp RCTRL
+&kp ESC            &kp Q        &kp W        &kp E         &kp R             &kp T        &kp Y    &kp U         &kp I         &kp O        &kp P           &kp BSPC
+&kp TAB            &hrm LGUI A  &hrm LALT S  &hrm LCTRL D  &hrm LSHIFT F     &kp G        &kp H    &hrm RSHFT J  &hrm RCTRL K  &hrm RALT L  &hrm RGUI SEMI  &kp SQT
+&shiftht LSHIFT 0  &kp Z        &kp X        &kp C         &kp V             &kp B        &kp N    &kp M         &kp COMMA     &kp DOT      &kp FSLH        &key_repeat
+                                             &mo 3         &lhtt 1 LEFT_ALT  &kp SPACE    &kp RET  &mo 2         &kp RCTRL
             >;
         };
 
