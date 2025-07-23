@@ -10,7 +10,7 @@
 
 / {
     behaviors {
-        shiftd: shift_td {
+        shiftd: shift_tap_dance {
             compatible = "zmk,behavior-tap-dance";
             label = "SHIFT_TAP_DANCE";
             #binding-cells = <0>;
@@ -39,13 +39,13 @@
             bindings = <&mo>, <&kt>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <180>;
+            tapping-term-ms = <80>;
             hold-trigger-key-positions = <37>;
-            quick-tap-ms = <120>;
+            quick-tap-ms = <50>;
             hold-while-undecided;
         };
 
-        shiftht: shift_ht {
+        shiftht: shift_hold_tap {
             compatible = "zmk,behavior-hold-tap";
             label = "SHIFT_HOLD_TAP";
             bindings = <&kp>, <&shiftd>;
