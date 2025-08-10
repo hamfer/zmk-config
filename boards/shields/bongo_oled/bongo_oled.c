@@ -1,5 +1,4 @@
 #include <zmk/display.h>
-#include <zmk/display/widgets/wpm.h>
 #include <lvgl.h>
 
 #ifdef CONFIG_ZMK_DISPLAY
@@ -95,7 +94,6 @@ static const lv_img_dsc_t bongo_left_down_img = {
 };
 
 // ===== STATE =====
-static uint8_t current_wpm;
 static uint32_t last_toggle = 0;
 static bool paw_up = true;
 
@@ -116,24 +114,9 @@ static void bongo_cat_render(lv_obj_t *scr) {
     lv_obj_t *img = lv_img_create(scr);
     lv_img_set_src(img, img_src);
     lv_obj_align(img, LV_ALIGN_TOP_MID, 0, 0);
-
-    /* Show WPM under it */
-    wpm_label = lv_label_create(scr);
-    lv_label_set_text(wpm_label, "WPM: 0");
-    lv_obj_align(wpm_label, LV_ALIGN_BOTTOM_MID, 0, -2);
-
-    zmk_display_show(scr);
 #endif
 }
 
-int bongo_wpm_listener(const zmk_event_t *eh) {
-    char buf[16];
-    snprintf(buf, sizeof(buf), "WPM: %d", zmk_wpm_get_state());
-    lv_label_set_text(wpm_label, buf);
-    return 0;
-}
-
-ZMK_LISTENER(bongo_wpm_listener, bongo_wpm_listener);
 ZMK_DISPLAY_WIDGET(bongo_cat_widget, bongo_cat_render);
 
 #endif // CONFIG_ZMK_DISPLAY
