@@ -1,0 +1,14 @@
+/ {
+    chosen {
+        zephyr,display = &ssd1306;
+    };
+
+    &i2c0 {
+        ssd1306: ssd1306@3c {
+            compatible = "solomon,ssd1306fb";
+            reg = <0x3C>;
+            width = <128>;
+            height = <32>;
+        };
+    };
+};

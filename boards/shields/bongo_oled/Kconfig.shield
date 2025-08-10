@@ -1,0 +1,4 @@
+config SHIELD_BONGO_OLED
+    bool "Bongo Cat OLED shield"
+    depends on SHIELD
+    default y

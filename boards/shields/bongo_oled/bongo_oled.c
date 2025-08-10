@@ -110,7 +110,7 @@ static void bongo_cat_render(lv_obj_t *scr) {
         last_toggle = k_uptime_get_32();
     }
 
-    img_src = paw_up ? &frame1_img : &frame2_img;
+    img_src = paw_up ? &bongo_all_up_img : &bongo_left_down_img;
 
     // Draw cat
     lv_obj_t *img = lv_img_create(scr);
@@ -126,15 +126,18 @@ static void bongo_cat_render(lv_obj_t *scr) {
 #endif
 }
 
-// ===== LISTENER =====
-static int wpm_listener(const zmk_event_t *eh) {
-    const struct wpm_state_changed *ev = as_wpm_state_changed(eh);
-    if (!ev) return 0;
-    current_wpm = ev->state;
-    return 0;
+int wpm_event_listener(const zmk_event_t *eh) {
+    struct wpm_state_changed *ev = as_wpm_state_changed(eh);
+    if (!ev) return ZMK_EV_EVENT_BUBBLE;
+
+    char buf[16];
+    snprintf(buf, sizeof(buf), "WPM: %d", ev->wpm);
+    lv_label_set_text(wpm_label, buf);
+
+    return ZMK_EV_EVENT_HANDLED;
 }
 
+ZMK_DISPLAY_WIDGET_LISTENER(wpm_widget, wpm_event_listener)
 ZMK_DISPLAY_WIDGET(bongo_cat_widget, bongo_cat_render);
-ZMK_SUBSCRIPTION(wpm_listener, wpm_state_changed);
 
 #endif // CONFIG_ZMK_DISPLAY
