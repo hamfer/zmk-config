@@ -1,5 +1,5 @@
 #include <zmk/display.h>
-#include <zmk/events/wpm_state_changed.h>
+#include <zmk/display/widgets/wpm.h>
 #include <lvgl.h>
 
 #ifdef CONFIG_ZMK_DISPLAY
@@ -117,27 +117,23 @@ static void bongo_cat_render(lv_obj_t *scr) {
     lv_img_set_src(img, img_src);
     lv_obj_align(img, LV_ALIGN_TOP_MID, 0, 0);
 
-    // Draw WPM
-    char buf[16];
-    snprintf(buf, sizeof(buf), "WPM:%d", current_wpm);
-    lv_obj_t *label = lv_label_create(scr);
-    lv_label_set_text(label, buf);
-    lv_obj_align(label, LV_ALIGN_BOTTOM_MID, 0, 0);
+    /* Show WPM under it */
+    wpm_label = lv_label_create(scr);
+    lv_label_set_text(wpm_label, "WPM: 0");
+    lv_obj_align(wpm_label, LV_ALIGN_BOTTOM_MID, 0, -2);
+
+    zmk_display_show(scr);
 #endif
 }
 
-int wpm_event_listener(const zmk_event_t *eh) {
-    struct wpm_state_changed *ev = as_wpm_state_changed(eh);
-    if (!ev) return ZMK_EV_EVENT_BUBBLE;
-
+int bongo_wpm_listener(const zmk_event_t *eh) {
     char buf[16];
-    snprintf(buf, sizeof(buf), "WPM: %d", ev->wpm);
+    snprintf(buf, sizeof(buf), "WPM: %d", zmk_wpm_get_state());
     lv_label_set_text(wpm_label, buf);
-
-    return ZMK_EV_EVENT_HANDLED;
+    return 0;
 }
 
-ZMK_DISPLAY_WIDGET_LISTENER(wpm_widget, wpm_event_listener)
+ZMK_LISTENER(bongo_wpm_listener, bongo_wpm_listener);
 ZMK_DISPLAY_WIDGET(bongo_cat_widget, bongo_cat_render);
 
 #endif // CONFIG_ZMK_DISPLAY
