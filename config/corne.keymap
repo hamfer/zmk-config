@@ -43,6 +43,26 @@
             bindings = <&kp LS(DEL)>;
             key-positions = <26 28 27>;
         };
+
+        underscore {
+            bindings = <&kp UNDER>;
+            key-positions = <6 7>;
+        };
+
+        minus {
+            bindings = <&kp MINUS>;
+            key-positions = <6 19>;
+        };
+
+        shift_left {
+            bindings = <&kp LSHIFT>;
+            key-positions = <16 17>;
+        };
+
+        shift_right {
+            bindings = <&kp RSHIFT>;
+            key-positions = <18 19>;
+        };
     };
 
     keymap {
