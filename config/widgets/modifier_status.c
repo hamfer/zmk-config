@@ -12,6 +12,8 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 
 #include <lvgl.h>
 
+#if IS_ENABLED(CONFIG_ZMK_DISPLAY)
+
 static sys_slist_t widgets = SYS_SLIST_STATIC_INIT(&widgets);
 
 struct modifier_status_state {
@@ -126,3 +128,5 @@ int zmk_widget_modifier_status_init(struct zmk_widget_modifier_status *widget,
 lv_obj_t *zmk_widget_modifier_status_obj(struct zmk_widget_modifier_status *widget) {
     return widget->obj;
 }
+
+#endif // IS_ENABLED(CONFIG_ZMK_DISPLAY)
