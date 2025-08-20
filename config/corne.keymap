@@ -7,6 +7,7 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/pointing.h>
 
 / {
@@ -42,16 +43,6 @@
         cut {
             bindings = <&kp LS(DEL)>;
             key-positions = <26 28 27>;
-        };
-
-        underscore {
-            bindings = <&kp UNDER>;
-            key-positions = <6 7>;
-        };
-
-        minus {
-            bindings = <&kp MINUS>;
-            key-positions = <6 19>;
         };
 
         shift_left {
@@ -133,10 +124,10 @@
 
         system {
             bindings = <
-&bt BT_CLR    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &trans  &trans  &kp C_PREV  &kp C_NEXT  &kp C_PP  &kp DEL
-&kp C_BRI_UP  &trans        &trans        &trans        &trans        &trans          &trans  &trans  &trans      &trans      &trans    &kp C_VOLUME_UP
-&kp C_BRI_DN  &trans        &trans        &trans        &trans        &trans          &trans  &trans  &trans      &trans      &trans    &kp C_VOL_DN
-                                          &trans        &trans        &trans          &trans  &trans  &trans
+&bt BT_CLR    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &out OUT_BLE  &out OUT_USB  &kp C_PREV  &kp C_NEXT  &kp C_PP  &trans
+&kp C_BRI_UP  &trans        &trans        &trans        &trans        &trans          &trans        &trans        &trans      &trans      &trans    &kp C_VOLUME_UP
+&kp C_BRI_DN  &trans        &trans        &trans        &trans        &trans          &trans        &trans        &trans      &trans      &trans    &kp C_VOL_DN
+                                          &trans        &trans        &trans          &trans        &trans        &trans
             >;
         };
 
