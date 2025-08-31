@@ -25,6 +25,26 @@
             require-prior-idle-ms = <150>;
             hold-trigger-on-release;
         };
+
+        mouse_move: mouse_move {
+            compatible = "zmk,behavior-input-two-axis";
+            label = "MOUSE_MOVE";
+            #binding-cells = <1>;
+            time-to-max-speed-ms = <500>;
+            acceleration-exponent = <2>;
+            x-input-code = <0>;
+            y-input-code = <1>;
+        };
+
+        mouse_scroll: mouse_scroll {
+            compatible = "zmk,behavior-input-two-axis";
+            label = "MOUSE_SCROLL";
+            #binding-cells = <1>;
+            x-input-code = <6>;
+            y-input-code = <8>;
+            acceleration-exponent = <2>;
+            time-to-max-speed-ms = <400>;
+        };
     };
 
     combos {
@@ -133,10 +153,10 @@
 
         nokey {
             bindings = <
-&trans  &trans  &trans          &mkp MB1      &mkp MB2        &mkp MB3           &mkp MB4        &mkp MB5        &trans        &trans           &trans  &trans
-&trans  &trans  &msc SCRL_LEFT  &msc SCRL_UP  &msc SCRL_DOWN  &msc SCRL_RIGHT    &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &trans  &trans
-&trans  &trans  &trans          &trans        &trans          &trans             &trans          &trans          &trans        &trans           &trans  &trans
-                                &trans        &trans          &trans             &trans          &trans          &trans
+&trans  &trans  &trans                   &mkp MB1               &mkp MB2                 &mkp MB3                    &mkp MB4               &mkp MB5               &trans               &trans                  &trans  &trans
+&trans  &trans  &mouse_scroll MOVE_LEFT  &mouse_scroll MOVE_UP  &mouse_scroll MOVE_DOWN  &mouse_scroll MOVE_RIGHT    &mouse_move MOVE_LEFT  &mouse_move MOVE_DOWN  &mouse_move MOVE_UP  &mouse_move MOVE_RIGHT  &trans  &trans
+&trans  &trans  &trans                   &trans                 &trans                   &trans                      &trans                 &trans                 &trans               &trans                  &trans  &trans
+                                         &trans                 &trans                   &trans                      &trans                 &trans                 &trans
             >;
         };
     };
