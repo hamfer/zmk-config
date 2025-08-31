@@ -31,7 +31,7 @@
             label = "MOUSE_MOVE";
             #binding-cells = <1>;
             time-to-max-speed-ms = <500>;
-            acceleration-exponent = <2>;
+            acceleration-exponent = <5>;
             x-input-code = <0>;
             y-input-code = <1>;
         };
@@ -42,7 +42,7 @@
             #binding-cells = <1>;
             x-input-code = <6>;
             y-input-code = <8>;
-            acceleration-exponent = <2>;
+            acceleration-exponent = <5>;
             time-to-max-speed-ms = <400>;
         };
     };
