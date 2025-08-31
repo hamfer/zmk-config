@@ -156,10 +156,10 @@
 
         nokey {
             bindings = <
-&trans  &trans  &trans                   &mkp MB1               &mkp MB2                 &mkp MB3                    &mkp MB4               &mkp MB5               &trans               &trans                  &trans  &trans
-&trans  &trans  &mouse_scroll MOVE_LEFT  &mouse_scroll MOVE_UP  &mouse_scroll MOVE_DOWN  &mouse_scroll MOVE_RIGHT    &mouse_move MOVE_LEFT  &mouse_move MOVE_DOWN  &mouse_move MOVE_UP  &mouse_move MOVE_RIGHT  &trans  &trans
-&trans  &trans  &trans                   &trans                 &trans                   &trans                      &trans                 &trans                 &trans               &trans                  &trans  &trans
-                                         &trans                 &trans                   &trans                      &trans                 &trans                 &trans
+&trans  &trans  &trans                   &mkp MB1                 &mkp MB2                 &mkp MB3                    &mkp MB4               &mkp MB5               &trans               &trans                  &trans  &trans
+&trans  &trans  &mouse_scroll MOVE_LEFT  &mouse_scroll MOVE_DOWN  &mouse_scroll MOVE_UP    &mouse_scroll MOVE_RIGHT    &mouse_move MOVE_LEFT  &mouse_move MOVE_DOWN  &mouse_move MOVE_UP  &mouse_move MOVE_RIGHT  &trans  &trans
+&trans  &trans  &trans                   &trans                   &trans                   &trans                      &trans                 &trans                 &trans               &trans                  &trans  &trans
+                                         &trans                   &trans                   &trans                      &trans                 &trans                 &trans
             >;
         };
     };
