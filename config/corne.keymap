@@ -4,8 +4,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-#define ZMK_POINTING_DEFAULT_MOVE_VAL 1500  // default: 600
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 20    // default: 10
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 2400  // default: 600
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 16    // default: 10
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
@@ -33,7 +33,7 @@
             compatible = "zmk,behavior-input-two-axis";
             label = "MOUSE_MOVE";
             #binding-cells = <1>;
-            time-to-max-speed-ms = <500>;
+            time-to-max-speed-ms = <1000>;
             acceleration-exponent = <1>;
             x-input-code = <0>;
             y-input-code = <1>;
@@ -46,7 +46,7 @@
             x-input-code = <6>;
             y-input-code = <8>;
             acceleration-exponent = <1>;
-            time-to-max-speed-ms = <2000>;
+            time-to-max-speed-ms = <4000>;
         };
     };
 
