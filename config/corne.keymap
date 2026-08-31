@@ -49,17 +49,24 @@
             time-to-max-speed-ms = <4000>;
         };
 
-        hold_mo_tap_kt: hold_mo_tap_kt {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HOLD_MO_TAP_KT";
-            bindings = <&mo>, <&kt>;
+        morph_hmr_left_index_tab: morph_hmr_left_index_tab {
+            compatible = "zmk,behavior-mod-morph";
+            label = "MORPH_HMR_LEFT_INDEX_TAB";
+            bindings = <&hrm LSHIFT F>, <&kp TAB>;
 
-            #binding-cells = <2>;
-            tapping-term-ms = <150>;
-            hold-trigger-key-positions = <36 37 40 41>;
-            hold-while-undecided;
-            hold-while-undecided-linger;
-            quick-tap-ms = <100>;
+            #binding-cells = <0>;
+            keep-mods = <(MOD_RALT)>;
+            mods = <(MOD_RALT)>;
+        };
+
+        morph_hmr_left_middle_stab: morph_hmr_left_middle_stab {
+            compatible = "zmk,behavior-mod-morph";
+            label = "MORPH_HMR_LEFT_MIDDLE_STAB";
+            bindings = <&hrm LCTRL D>, <&kp RS(TAB)>;
+
+            #binding-cells = <0>;
+            keep-mods = <(MOD_RALT)>;
+            mods = <(MOD_RALT)>;
         };
     };
 
@@ -80,16 +87,6 @@
             bindings = <&kp LS(DEL)>;
             key-positions = <26 28 27>;
         };
-
-        shift_left {
-            bindings = <&kp LSHIFT>;
-            key-positions = <16 17>;
-        };
-
-        shift_right {
-            bindings = <&kp RSHIFT>;
-            key-positions = <18 19>;
-        };
     };
 
     keymap {
@@ -103,10 +100,10 @@
             //                   | CTRL | LWR | SPC |   | GUI | RSE | ALT |
 
             bindings = <
-&kp TAB     &kp Q        &kp W        &kp E         &kp R          &kp T             &kp Y    &kp U         &kp I         &kp O        &kp P           &kp BACKSLASH
-&kp ESC     &hrm LGUI A  &hrm LALT S  &hrm LCTRL D  &hrm LSHIFT F  &kp G             &kp H    &hrm RSHFT J  &hrm RCTRL K  &hrm RALT L  &hrm RGUI SEMI  &kp SQT
-&kp LSHIFT  &kp Z        &kp X        &kp C         &kp V          &kp B             &kp N    &kp M         &kp COMMA     &kp DOT      &kp FSLH        &key_repeat
-                                      &mo 3         &mo 1          &mt LALT SPACE    &kp RET  &mo 2         &mo 4
+&kp TAB     &kp Q        &kp W        &kp E                        &kp R                      &kp T             &kp Y    &kp U         &kp I         &kp O        &kp P           &kp BACKSLASH
+&kp ESC     &hrm LGUI A  &hrm LALT S  &morph_hmr_left_middle_stab  &morph_hmr_left_index_tab  &kp G             &kp H    &hrm RSHFT J  &hrm RCTRL K  &hrm LALT L  &hrm RGUI SEMI  &kp SQT
+&kp LSHIFT  &kp Z        &kp X        &kp C                        &kp V                      &kp B             &kp N    &kp M         &kp COMMA     &kp DOT      &kp FSLH        &key_repeat
+                                      &mo 3                        &mo 1                      &mt RALT SPACE    &kp RET  &mo 2         &mo 4
             >;
         };
 
